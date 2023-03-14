@@ -13,3 +13,11 @@ for i in `find ./content/en -type f -name '*.md'`; do
         fi
         echo [OLD] ./content/ja/${item}
 done
+
+for i in `find ./content/ja -type f -name '*.md'`; do
+        item=$(echo ${i} |  cut -d '/' -f 4-)
+        if [ ! -e ./content/en/${item} ]; then
+                echo [MOVE] ./content/ja/${item}
+                continue
+        fi
+done
