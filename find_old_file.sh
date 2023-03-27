@@ -3,7 +3,7 @@
 for i in `find ./content/en -type f -name '*.md'`; do
         item=$(echo ${i} |  cut -d '/' -f 4-)
         if [ ! -e ./content/ja/${item} ]; then
-                echo [NONE] ./content/ja/${item}
+                echo [NONE $(wc -l ./content/en/${item} | cut -d ' ' -f 1)] ./content/ja/${item}
                 continue
         fi
         if [ ! ./content/ja/${item} -ot ./content/en/${item} ] && [ ! ./content/ja/${item} -nt ./content/en/${item} ] ; then
